@@ -39,21 +39,20 @@ html,
 body {
   margin: 0;
   padding: 0;
-  width: 100%;
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
 }
 
 .GameCamera {
-  transform: scale(6);
+  width: 920px;
+  height: 560px;
+
   position: relative;
+  overflow: hidden;
 }
 
 .World {
-  left: 4;
   position: absolute;
-  transform: translate(-50%, -50%);
+  transform: scale(6);
 }
