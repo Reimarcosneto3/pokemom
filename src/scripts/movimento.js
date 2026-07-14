@@ -1,13 +1,13 @@
 import hitbox from "../scenes/nuvema_town/hitbox";
 
-function movim(setPlayerPosition) {
+function movim(setPlayerPosition, fps) {
   const keys = {
     w: false,
     s: false,
     a: false,
     d: false,
   };
-  const fps = 120;
+  const FPS = fps;
 
   let interval = null;
 
@@ -32,27 +32,35 @@ function movim(setPlayerPosition) {
       let x = pos.x;
       let y = pos.y;
 
-      if (keys.w && hitbox[y - 1]?.[x] === 0) {
-        y--;
-      }
-      if (keys.s && hitbox[y + 1]?.[x] === 0) {
-        y++;
-      }
-      if (keys.a && hitbox[y]?.[x - 1] === 0) {
-        x--;
-      }
-      if (keys.d && hitbox[y]?.[x + 1] === 0) {
-        x++;
+      let moving = false;
+      let direction = pos.direction || "down";
+
+      if (keys.w) {
+        direction = "up";
+        moving = true;
+        if (hitbox[y - 1]?.[x] === 0) y--;
+      } else if (keys.s) {
+        direction = "down";
+        moving = true;
+        if (hitbox[y + 1]?.[x] === 0) y++;
+      } else if (keys.a) {
+        direction = "left";
+        moving = true;
+        if (hitbox[y]?.[x - 1] === 0) x--;
+      } else if (keys.d) {
+        direction = "right";
+        moving = true;
+        if (hitbox[y]?.[x + 1] === 0) x++;
       }
 
-      return { x, y };
+      return { x, y, direction, moving };
     });
   };
 
   document.addEventListener("keydown", handleKeyDown);
   document.addEventListener("keyup", handleKeyUp);
 
-  interval = setInterval(move, fps);
+  interval = setInterval(move, FPS);
 
   return () => {
     document.removeEventListener("keydown", handleKeyDown);

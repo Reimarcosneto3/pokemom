@@ -11,6 +11,7 @@ function App() {
 
   const TILE_SIZE = 16;
   const SCALE = 3;
+  const FPS = 120;
 
   const [mapDimensions, setMapDimensions] = useState({
     widthPx: 0,
@@ -23,6 +24,8 @@ function App() {
   const [playerPosition, setPlayerPosition] = useState({
     x: 14,
     y: 18,
+    direction: "down",
+    moving: false,
   });
 
   useEffect(() => {
@@ -33,7 +36,7 @@ function App() {
       });
     }
 
-    const clearMovim = movim(setPlayerPosition);
+    const clearMovim = movim(setPlayerPosition, FPS);
 
     return () => {
       clearMovim();
@@ -76,9 +79,9 @@ function App() {
         }}
       >
         <Player
-          posX={playerPosition.x}
-          posY={playerPosition.y}
+          playerPosition={playerPosition}
           tileSize={TILE_SIZE}
+          fps={FPS}
         />
         <Map tileSize={TILE_SIZE} onMapLoaded={setMapDimensions} />
       </div>
