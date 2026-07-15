@@ -13,7 +13,7 @@
     </tr>
 </table>
 
-### Data de início: **@22/06/2026**
+#### Data de início: **@22/06/2026**
 
 > Após o grande desenvolvedor [@Reimarcosneto3](https://github.com/Reimarcosneto3), ter seu primeiro insight do ano, ele chamou 5 desenvolvedores para trabalharem com ele em seu projeto.
 
