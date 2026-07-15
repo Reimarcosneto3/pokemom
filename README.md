@@ -17,7 +17,7 @@
 
 > Após o grande desenvolvedor [@Reimarcosneto3](https://github.com/Reimarcosneto3), ter seu primeiro insight do ano, ele chamou 5 desenvolvedores para trabalharem com ele em seu projeto.
 
-![Status](https://img.shields.io/badge/status-Em%20Desenvolvimento-yellow)
+<picture>![Status](https://img.shields.io/badge/status-Em%20Desenvolvimento-yellow)</picture>
 [![Vite](https://img.shields.io/badge/Vite-8.1.0-magenta?logo=vite)](https://vitejs.dev/)
 [![React](https://img.shields.io/badge/React-19.2.7-blue?logo=react)](https://react.dev/)
 [![Node.js](https://img.shields.io/badge/Node.js-24.18.0-green?logo=node.js)](https://nodejs.org/)
@@ -29,6 +29,7 @@
 <table>
     <tr>
         <td>
+<h6>
 <pre>
 <code>
 📁 root
@@ -70,6 +71,7 @@
 └── 📄 vite.config.js
 </code>
 </pre>
+</h6>
         </td>
         <td>
     <ol>
@@ -97,6 +99,9 @@
         </td>
     </tr>
 </table>
+
+[![Tiled](https://img.shields.io/badge/Tiled-Map%20Editor-blue?logo=telegraph&logoColor=white)](https://www.mapeditor.org/)
+[![Aseprite](https://img.shields.io/badge/Aseprite-Pixel%20Art-eb5e28?logo=aseprite&logoColor=white)](https://www.aseprite.org/)
 
 ## 📁 Instalação e Execução
 
