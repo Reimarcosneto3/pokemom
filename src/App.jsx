@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useMemo } from "react";
 
 import { Map } from "./scenes/nuvema_town/Map";
 import { Player } from "./components/Player";
@@ -43,29 +43,37 @@ function App() {
     };
   }, []);
 
-  const visualX = Math.max(
-    Math.min(
-      -(
-        playerPosition.x * TILE_SIZE +
-        TILE_SIZE / 2 -
-        cameraSize.width / (2 * SCALE)
+  const visualX = Math.round(
+    Math.max(
+      Math.min(
+        -(
+          playerPosition.x * TILE_SIZE +
+          TILE_SIZE / 2 -
+          cameraSize.width / (2 * SCALE)
+        ),
+        0,
       ),
-      0,
+      -(mapDimensions.widthPx - cameraSize.width / SCALE),
     ),
-    -(mapDimensions.widthPx - cameraSize.width / SCALE),
   );
 
-  const visualY = Math.max(
-    Math.min(
-      -(
-        playerPosition.y * TILE_SIZE +
-        TILE_SIZE / 2 -
-        cameraSize.height / (2 * SCALE)
+  const visualY = Math.round(
+    Math.max(
+      Math.min(
+        -(
+          playerPosition.y * TILE_SIZE +
+          TILE_SIZE / 2 -
+          cameraSize.height / (2 * SCALE)
+        ),
+        0,
       ),
-      0,
+      -(mapDimensions.heightPx - cameraSize.height / SCALE),
     ),
-    -(mapDimensions.heightPx - cameraSize.height / SCALE),
   );
+
+  const MapMemorizer = useMemo(() => {
+    return <Map tileSize={TILE_SIZE} onMapLoaded={setMapDimensions} />;
+  }, [TILE_SIZE]);
 
   return (
     <div className="GameCamera" ref={cameraRef}>
@@ -76,6 +84,7 @@ function App() {
           height: `${mapDimensions.heightPx}px`,
           transform: `scale(${SCALE}) translate3d(${visualX}px, ${visualY}px, 0)`,
           transformOrigin: "top left",
+          willChange: "transform",
         }}
       >
         <Player
@@ -83,7 +92,7 @@ function App() {
           tileSize={TILE_SIZE}
           fps={FPS}
         />
-        <Map tileSize={TILE_SIZE} onMapLoaded={setMapDimensions} />
+        {MapMemorizer}
       </div>
     </div>
   );

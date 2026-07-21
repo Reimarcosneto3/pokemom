@@ -25,7 +25,7 @@ export const Player = ({ playerPosition, tileSize, fps }) => {
       className="PlayerContainer"
       style={{
         transform: `translate3d(${visualX}px, ${visualY - offsetY}px, 0)`,
-        zIndex: 25,
+        zIndex: 35,
       }}
     >
       <CharacterRenderer
