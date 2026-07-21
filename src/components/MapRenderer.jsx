@@ -42,14 +42,14 @@ export const MapRenderer = ({ mapData, tileSize }) => {
                 );
               }
 
+              const realData = data & 0xffff;
+
               mapData.tilesets.forEach((options) => {
-                if (data >= options.firstgid) {
+                if (realData >= options.firstgid) {
                   spriteSheetColumns = options.columns;
                   spriteSheetUrl = options.image;
                 }
               });
-
-              const realData = data & 0xffff;
 
               const flipHorizontal = (data & 0x80000000) !== 0;
               const flipVertical = (data & 0x40000000) !== 0;
